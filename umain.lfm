@@ -1,0 +1,79 @@
+object frmMain: TfrmMain
+  Left = 362
+  Height = 600
+  Top = 181
+  Width = 800
+  Caption = 'Open Surge Language Editor'
+  ClientHeight = 575
+  ClientWidth = 800
+  Menu = MainMenu1
+  OnCloseQuery = FormCloseQuery
+  Position = poScreenCenter
+  LCLVersion = '1.6.2.0'
+  object StringGrid1: TStringGrid
+    Left = 0
+    Height = 575
+    Top = 0
+    Width = 800
+    Align = alClient
+    AutoFillColumns = True
+    BorderStyle = bsNone
+    ColCount = 3
+    Columns = <    
+      item
+        Title.Caption = 'Resource'
+        Width = 480
+      end>
+    FixedCols = 2
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goThumbTracking, goSmoothScroll, goFixedRowNumbering]
+    RowCount = 1
+    TabOrder = 0
+    TitleStyle = tsNative
+    OnEditingDone = StringGrid1EditingDone
+    ColWidths = (
+      160
+      160
+      480
+    )
+  end
+  object MainMenu1: TMainMenu
+    left = 133
+    top = 85
+    object MenuItem1: TMenuItem
+      Caption = 'File'
+      object MenuItem2: TMenuItem
+        Caption = 'Open...'
+        OnClick = MenuItem2Click
+      end
+      object MenuItem6: TMenuItem
+        Caption = 'Save...'
+        OnClick = MenuItem6Click
+      end
+      object MenuItem3: TMenuItem
+        Caption = 'Save as...'
+        OnClick = MenuItem3Click
+      end
+      object MenuItem4: TMenuItem
+        Caption = '-'
+      end
+      object MenuItem5: TMenuItem
+        Caption = 'Exit'
+      end
+    end
+  end
+  object ActionList1: TActionList
+    left = 232
+    top = 85
+    object FileOpen1: TFileOpen
+      Category = 'File'
+      Caption = '&Abrir ...'
+      Hint = 'Abrir'
+      ShortCut = 16463
+    end
+    object FileSaveAs1: TFileSaveAs
+      Category = 'File'
+      Caption = 'Gu&ardar Como ...'
+      Hint = 'Guardar Como'
+    end
+  end
+end
