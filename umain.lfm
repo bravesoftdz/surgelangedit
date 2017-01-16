@@ -58,6 +58,7 @@ object frmMain: TfrmMain
       end
       object MenuItem5: TMenuItem
         Caption = 'Exit'
+        OnClick = MenuItem5Click
       end
     end
   end

@@ -27,6 +27,7 @@ type
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure MenuItem2Click(Sender: TObject);
     procedure MenuItem3Click(Sender: TObject);
+    procedure MenuItem5Click(Sender: TObject);
     procedure MenuItem6Click(Sender: TObject);
     procedure StringGrid1EditingDone(Sender: TObject);
   private
@@ -75,6 +76,11 @@ begin
     SaveLanguageToFile(LastFile);
     FileSaved := True;
   end;
+end;
+
+procedure TfrmMain.MenuItem5Click(Sender: TObject);
+begin
+  Close;
 end;
 
 procedure TfrmMain.FormCloseQuery(Sender: TObject; var CanClose: boolean);
