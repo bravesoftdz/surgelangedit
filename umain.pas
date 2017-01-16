@@ -33,6 +33,7 @@ type
     { private declarations }
     LastFile: string;
     FileSaved: boolean;
+    MaxWidth: integer;
     procedure LoadLanguageFromFile(FileName: string);
     procedure SaveLanguageToFile(FileName: string);
   public
@@ -108,6 +109,8 @@ var
   s, t: TStringList;
   i: integer;
 begin
+  MaxWidth := 0;
+
   StringGrid1.BeginUpdate;
   StringGrid1.RowCount := 1;
 
@@ -135,6 +138,9 @@ begin
     StringGrid1.Cells[1, StringGrid1.RowCount - 1] := t[0];
     StringGrid1.Cells[2, StringGrid1.RowCount - 1] := t[1];
 
+    if Length(t[0]) > MaxWidth then
+      MaxWidth := Length(t[0]);
+
     t.Free;
   end;
   s.Free;
@@ -144,13 +150,27 @@ begin
 end;
 
 procedure TfrmMain.SaveLanguageToFile(FileName: string);
+
+  function PrettyPrint(s: string): string;
+  var
+    n, i: integer;
+  begin
+
+    n := MaxWidth - Length(s);
+
+    for i:=0 to n do
+      s := s + ' ';
+
+    Result := s;
+  end;
+
 var
   s: TStringList;
   i: integer;
 begin
   s := TStringList.Create;
   for i := 1 to StringGrid1.RowCount - 1 do
-    s.AddText(StringGrid1.Cells[1, i] + ' "' + StringGrid1.Cells[2, i] + '"');
+    s.AddText(PrettyPrint(StringGrid1.Cells[1, i]) + '"' + StringGrid1.Cells[2, i] + '"');
   s.SaveToFile(FileName);
   s.Free;
 end;
